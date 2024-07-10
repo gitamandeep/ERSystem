@@ -1,0 +1,41 @@
+body{
+    font-family: custom;
+    color: white;
+}
+
+form{
+   margin: 0;
+   padding: 0;
+}
+
+label{
+    font-size: larger;
+}
+
+.login{
+    font-family: custom;
+    margin-bottom: 23px;
+    margin-top: 25px;
+    padding-left: 43%;
+    border-radius: 23px;
+    padding-right: 35%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: large;
+}
+.box1{
+    background: rgba( 255, 255, 255, 0 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 0px );
+-webkit-backdrop-filter: blur( 0px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+@media only screen and (max-width: 600px) {
+        .login{
+            padding-left: 40%;
+            border-radius: 15px;
+            width: 100%;
+        }
+}
