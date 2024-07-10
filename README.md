@@ -2,7 +2,7 @@
 Introduction
 The Employee Reimbursement System (ERS) is a web-based application that allows employees to submit and track their reimbursement requests. Administrators can review and approve or deny these requests. The system uses Spring Boot for the backend, ReactJS for the frontend, and an SQL database for data storage.
 
-Features
+# Features
 User Authentication: Secure login and registration.
 Role-Based Access Control: Different functionalities for Admin and User roles.
 Reimbursement Submission: Employees can submit reimbursement requests.
@@ -20,56 +20,49 @@ Node.js 16+
 npm 8+
 MySQL or PostgreSQL
 
-Installation
-Clone the repository:
+# Installation
+* Clone the repository:
+git clone https://github.com/gitamandeep/ERSystem.git
+* cd ERSystem
 
-bash
-Copy code
-git clone https://github.com/gitamandeep/ersystem.git
-cd ersystem
-Backend Setup:
+# Backend Setup:
+* Navigate to the backend directory:
+* cd ers-backend/ers
+* Update the application.properties file with your database credentials.
+* Build and run the backend application:
+* ./mvnw clean install
+* ./mvnw spring-boot:run
 
-Navigate to the backend directory:
-bash
-Copy code
-cd ers-backend/ers
-Update the application.properties file with your database credentials.
-Build and run the backend application:
-bash
-Copy code
-./mvnw clean install
-./mvnw spring-boot:run
-
-Frontend Setup:
-
-Navigate to the frontend directory:
-bash
-Copy code
-cd ers-frontend
-Install the dependencies and run the frontend application:
-bash
-Copy code
-npm install
-npm run dev
-Configuration
-Backend:
+# Frontend Setup:
+* Navigate to the frontend directory:
+* bash
+* Copy code
+* cd ers-frontend
+* Install the dependencies and run the frontend application:
+* bash
+* Copy code
+* npm install
+* npm run dev
+  
+# Configuration
+* Backend:
 
 Update src/main/resources/application.properties with your database configurations and other properties:
 
-properties
-Copy code
-spring.datasource.url=jdbc:mysql://localhost:3306/ers
-spring.datasource.username=root
-spring.datasource.password=yourpassword
-spring.jpa.hibernate.ddl-auto=update
+# properties
+* Copy code
+* spring.datasource.url=jdbc:mysql://localhost:3306/ers
+* spring.datasource.username=root
+* spring.datasource.password=yourpassword
+* spring.jpa.hibernate.ddl-auto=update
 
 # JWT properties
-jwt.secret=yourSecretKey
-jwt.expiration=3600000
+* jwt.secret=yourSecretKey
+* jwt.expiration=3600000
 
 # CORS configuration
-myapp.cors.origin=http://localhost:3000
-Frontend:
+* myapp.cors.origin=http://localhost:3000
+* Frontend:
 
 Update the API endpoints in src/config.js:
 
@@ -86,22 +79,22 @@ Track Requests: Users can view the status of their submitted requests.
 Admin Dashboard
 View Requests: Admins can view all reimbursement requests.
 Approve/Deny Requests: Admins can approve or deny reimbursement requests.
-API Endpoints
-Authentication:
+# API Endpoints
+### Authentication:
 
-POST /api/v1/auth/login: User login
-POST /api/v1/auth/create-user: Create a new user
-Reimbursements:
+- POST /api/v1/auth/login: User login
+- POST /api/v1/auth/create-user: Create a new user
+### Reimbursements:
 
-GET /api/v1/reimbursements: Get all reimbursements (Admin)
-GET /api/v1/reimbursements/{id}: Get reimbursement by ID
-POST /api/v1/reimbursements: Create a new reimbursement request
-PUT /api/v1/reimbursements/{id}: Update reimbursement status (Admin)
-Contributing
+- GET /api/v1/reimbursements: Get all reimbursements (Admin)
+- GET /api/v1/reimbursements/{id}: Get reimbursement by ID
+- POST /api/v1/reimbursements: Create a new reimbursement request
+- PUT /api/v1/reimbursements/{id}: Update reimbursement status (Admin)
+# Contributing
 Contributions are welcome! Please follow these steps:
 
-Fork the repository
-Create a new branch (git checkout -b feature/your-feature)
-Commit your changes (git commit -am 'Add new feature')
-Push to the branch (git push origin feature/your-feature)
-Create a new Pull Request
+* Fork the repository
+* Create a new branch (git checkout -b feature/your-feature)
+* Commit your changes (git commit -am 'Add new feature')
+* Push to the branch (git push origin feature/your-feature)
+* Create a new Pull Request
