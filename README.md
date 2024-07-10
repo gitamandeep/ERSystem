@@ -1,4 +1,4 @@
-Employee Reimbursement System (ERS)
+# Employee Reimbursement System (ERS)
 Introduction
 The Employee Reimbursement System (ERS) is a web-based application that allows employees to submit and track their reimbursement requests. Administrators can review and approve or deny these requests. The system uses Spring Boot for the backend, ReactJS for the frontend, and an SQL database for data storage.
 
