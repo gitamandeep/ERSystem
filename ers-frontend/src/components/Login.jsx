@@ -35,7 +35,7 @@ const Login = () => {
 
     if (validata()) { // Assuming validate() is a function that checks the login inputs
       try {
-        const response = await fetch('http://localhost:8080/api/v1/auth/login', {
+        const response = await fetch('https://0da5-223-178-212-188.ngrok-free.app/api/v1/auth/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -119,8 +119,8 @@ const Login = () => {
             <span>By creating an account,you agree to our</span> <NavLink to="#" className="link text-blue-600 hover:underline dark:text-blue-500">Terms of Service</NavLink> <span>and</span> <NavLink to="#" className="link text-blue-600 hover:underline dark:text-blue-500">Privacy Policy</NavLink>
           </div>
         </div>
-        <div className={`box hidden lg:block bg-${colors.primary} rounded-s-xl w-[38%] h-[96%] absolute mt-3 ml-[134px] top-0`}>
-          <div className={`absolute bg-${colors.secondary} ml-[50px] top-[47px]`}>
+        <div className={`box hidden lg:block bg-[#27DEBF] rounded-s-xl w-[38%] h-[96%] absolute mt-3 ml-[134px] top-0`}>
+          <div className={`absolute bg-[#455A64] ml-[50px] top-[47px]`}>
             <div className={`box1 text-${fonts.whitecolor} w-[400px] h-[500px] relative`}>
               <img className='img rounded-full absolute ml-[60px] top-[0px] ' width={250} src="Desktop - 1.png" alt="" />
               <h3 className='ml-[30px] mt-[390px] font-custom text-xl font-semibold'>Seamless work expreience</h3>
