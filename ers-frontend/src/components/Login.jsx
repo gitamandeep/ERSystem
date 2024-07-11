@@ -114,7 +114,7 @@ const Login = () => {
           <div className="forget font-custom font-light text-sm cursor-pointer hover:font-bold lg:ml-[65%]">
             Forget Password?
           </div>
-          <button type="submit" className={`login text-white bg-${colors.primary} hover:bg-${colors.dark} focus:ring-4 focus:outline-none focus:ring-${colors.light} font-medium sm:w-auto text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800`}>Login &nbsp; &rarr;</button>
+          <button type="submit" className={`login text-white bg-[#27DEBF] hover:bg-[#1a917d] focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium sm:w-auto text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800`}>Login &nbsp; &rarr;</button>
           <div className='font-custom text-xs ml-4 pr-8 font-medium'>
             <span>By creating an account,you agree to our</span> <NavLink to="#" className="link text-blue-600 hover:underline dark:text-blue-500">Terms of Service</NavLink> <span>and</span> <NavLink to="#" className="link text-blue-600 hover:underline dark:text-blue-500">Privacy Policy</NavLink>
           </div>

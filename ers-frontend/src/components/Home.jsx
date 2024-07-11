@@ -29,7 +29,7 @@ const Home = () => {
   }, []);
 
   if (!userData) {
-    return <p>Loading...</p>; // Placeholder for when data is being fetched
+    return <> <Navbar/> <p>Loading...</p> </> // Placeholder for when data is being fetched
   }
 
   return (
