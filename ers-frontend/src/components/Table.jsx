@@ -7,7 +7,7 @@ const Table = () => {
     <>
       <main className="table w-[90vw] bg-white text-black mx-auto h-auto mb-10 rounded-xl shadow-xl border-2 border-gray-100">
         <div className='header p-3 w-full bg-slate-200 rounded-t-lg text-gray-700'>REPORTS SUMMERY</div>
-        <div className="reports flex">
+        <div className="reports md:flex flex-wrap w-[85%] md:w-[95%]">
           <Reports title="Most Recent" para="Reports"/>
           <Reports title="Unsubmitted Reports" para="1 Reports"/>
           <Reports title="Awaiting Approval" para="0 Reports"/>

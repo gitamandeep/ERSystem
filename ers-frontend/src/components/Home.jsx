@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import Card from './Card';
 import Table from './Table';
+import './Home.css'
 const Home = () => {
   const [userData, setUserData] = useState(null);
 
   // useEffect(() => {
   //   const token = localStorage.getItem('token');
   //   if (token) {
-  //     fetch('https://489d-223-178-212-47.ngrok-free.app/api/v1/admin/all-reimbursement', {
+  //     fetch('https://0de4-157-39-34-236.ngrok-free.app/api/v1/admin/all-reimbursement', {
   //       method: 'GET',
   //       headers: {
   //         'Authorization': `Bearer ${token}`,
@@ -32,7 +33,7 @@ const Home = () => {
   // }, []);
 
   // if (!userData) {
-  //   return <> <Navbar/> <p>Loading...</p> </> // Placeholder for when data is being fetched
+  //   return <> <Navbar/> <div class="loader"></div>  </> // Placeholder for when data is being fetched
   // }
 
   return (

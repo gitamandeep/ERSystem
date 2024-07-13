@@ -32,15 +32,16 @@ const Navbar = () => {
                         trigger="hover">
                     </lord-icon>
                     </span>
-                    <h1 className='text-black text-2xl md:text-2xl m-2 md:m-0 font-custom font-bold'>&lt;ERSystem/&gt;</h1>
+                    <h1 className='text-black text-2xl md:text-2xl m-2 md:m-0 font-custom hidden md:block font-bold'>&lt;ERSystem/&gt;</h1>
+                    <h1 className='text-black text-2xl md:text-2xl md:hidden block m-0 md:m-0 font-custom font-bold'>&lt;ERS/&gt;</h1>
                 </div>
                 <div>
-                    <ul className='text-black flex md:gap-7 gap-4 md:text-xl text-xl font-semibold m-4 font-custom'>
+                    <ul className='text-black flex md:gap-7 gap-4 md:text-xl text-xl font-semibold m-0 md:m-4 font-custom'>
                         <NavLink to="#"><li>Employes</li></NavLink>
                         <NavLink to="#"><li>Profile</li></NavLink>
                     </ul>
                 </div>
-                <div className="btn">
+                <div className="btn gap-[10px]">
                     <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={handleclick}>Logout</button>
                 </div>
             </nav>

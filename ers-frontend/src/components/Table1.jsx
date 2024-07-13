@@ -4,20 +4,20 @@ import DataTable from 'react-data-table-component'
 import { useState, useEffect } from 'react'
 
 const Table1 = () => {
-    //  const [data, setData] = useState([])
+//      const [data, setData] = useState([])
 
-    //  const getData = async () => {
-    //    try {
-    //     const response = await axios.get("")
-    //     setData(response.data)
-    //    } catch (error) {
-    //     console.log(error)
-    //    }
-    //  }
+//      const getData = async () => {
+//        try {
+//         const response = await axios.get("")
+//         setData(response.data)
+//        } catch (error) {
+//         console.log(error)
+//        }
+//      }
 
-    //  useEffect(() => {
-    //    getData();
-    //  }, [])
+//      useEffect(() => {
+//        getData();
+//      }, [])
 
     const columns = [
         {
