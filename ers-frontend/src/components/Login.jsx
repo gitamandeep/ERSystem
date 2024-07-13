@@ -35,7 +35,7 @@ const Login = () => {
 
     if (validata()) { // Assuming validate() is a function that checks the login inputs
       try {
-        const response = await fetch('https://0da5-223-178-212-188.ngrok-free.app/api/v1/auth/login', {
+        const response = await fetch('https://0de4-157-39-34-236.ngrok-free.app/api/v1/auth/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -86,7 +86,7 @@ const Login = () => {
 
   return (
     <>
-
+<div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
       <form onSubmit={handleLogin}>
         <div className={`form bg-white rounded-xl lg:rounded-e-xl text-${fonts.fontcolor} w-[85%] lg:w-[38%] h-[582px] p-4 lg:p-14 mt-3 lg:ml-[643px] m-auto`}>
           <div className="logo ml-[42%] lg:ml-[180px] ">
@@ -114,13 +114,13 @@ const Login = () => {
           <div className="forget font-custom font-light text-sm cursor-pointer hover:font-bold lg:ml-[65%]">
             Forget Password?
           </div>
-          <button type="submit" className={`login text-white bg-${colors.primary} hover:bg-${colors.dark} focus:ring-4 focus:outline-none focus:ring-${colors.light} font-medium sm:w-auto text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800`}>Login &nbsp; &rarr;</button>
+          <button type="submit" className={`login text-white bg-[#27DEBF] hover:bg-[#1a917d] focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium sm:w-auto text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800`}>Login &nbsp; &rarr;</button>
           <div className='font-custom text-xs ml-4 pr-8 font-medium'>
             <span>By creating an account,you agree to our</span> <NavLink to="#" className="link text-blue-600 hover:underline dark:text-blue-500">Terms of Service</NavLink> <span>and</span> <NavLink to="#" className="link text-blue-600 hover:underline dark:text-blue-500">Privacy Policy</NavLink>
           </div>
         </div>
         <div className={`box hidden lg:block bg-[#27DEBF] rounded-s-xl w-[38%] h-[96%] absolute mt-3 ml-[134px] top-0`}>
-          <div className={`absolute bg-[#455A64] ml-[50px] top-[47px]`}>
+          <div className={`absolute rounded-xl bg-[#455A64] ml-[50px] top-[47px]`}>
             <div className={`box1 text-${fonts.whitecolor} w-[400px] h-[500px] relative`}>
               <img className='img rounded-full absolute ml-[60px] top-[0px] ' width={250} src="Desktop - 1.png" alt="" />
               <h3 className='ml-[30px] mt-[390px] font-custom text-xl font-semibold'>Seamless work expreience</h3>
