@@ -3,42 +3,19 @@ import React from 'react'
 import DataTable from 'react-data-table-component'
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
+import './Table1.css'
 
 const Table1 = () => {
-    //  const [data, setData] = useState([])
-
-    //  useEffect(() => {
-    //     const fetchData = async () => {
-    //       const token = localStorage.getItem('token');
-    //       if (token) {
-    //         try {
-    //           const response = await axios.get('https://e10d-2401-4900-1c71-bb35-95-d6f8-ab4d-1409.ngrok-free.app/api/v1/admin/all-reimbursement', {
-    //             headers: {
-    //                 'Authorization': `Bearer ${token}`,
-    //               },
-    //           });
-    //           setData(response.data); // Store user data in state
-    //           console.log(JSON.stringify(response.data));
-    //         } catch (error) {
-    //           console.error('Error fetching user data:', error);
-    //           // Handle error (e.g., show error message to user)
-    //         }
-    //       }
-    //     };
-
-    //     fetchData();
-    //   }, []); 
-
-    // Define columns
     const columns = [
         {
             name: 'Item Name',
+            selector: row => row.employee.name,
             selector: row => row.expense.itemName,
             sortable: true,
             cell: row => (
                 <NavLink
-                    to={`/data/${row.id}`} // Use URL parameters to pass data
-                    style={{ color: 'blue', textDecoration: 'underline' }}
+                    to={`/data/${row.id}`}
+                    className="dataTable-link"
                 >
                     {row.expense.itemName}
                 </NavLink>
@@ -61,7 +38,6 @@ const Table1 = () => {
         }
     ];
 
-    // Sample data
     const data = [
         {
             "id": "1c504e91-fbba-4e5d-9ead-0d1d0ed4be8a",
@@ -141,15 +117,73 @@ const Table1 = () => {
         }
     ];
 
+    const customStyles = {
+        header: {
+            style: {
+                minHeight: '56px',
+                backgroundColor: '#f1f3f5',
+                color: '#343a40',
+                fontSize: '18px',
+                fontWeight: 'bold',
+            },
+        },
+        headRow: {
+            style: {
+                backgroundColor: '#f1f3f5',
+                borderBottomWidth: '2px',
+                borderBottomColor: '#dee2e6',
+                borderBottomStyle: 'solid',
+            },
+        },
+        headCells: {
+            style: {
+                color: '#343a40',
+                fontWeight: 'bold',
+                fontSize: '16px',
+                paddingLeft: '16px',
+                paddingRight: '16px',
+            },
+        },
+        rows: {
+            style: {
+                minHeight: '48px',
+                '&:not(:last-of-type)': {
+                    borderBottomWidth: '1px',
+                    borderBottomColor: '#dee2e6',
+                    borderBottomStyle: 'solid',
+                },
+            },
+        },
+        cells: {
+            style: {
+                paddingLeft: '16px',
+                paddingRight: '16px',
+                fontSize: '16px',
+            },
+        },
+        pagination: {
+            style: {
+                borderTopWidth: '1px',
+                borderTopColor: '#dee2e6',
+                borderTopStyle: 'solid',
+                backgroundColor: '#f1f3f5',
+            },
+        },
+    };
+
     return (
-        <div className='md:w-[90vw] w-[80vw]'>
-            <DataTable columns={columns} data={data} pagination
+        <div className='dataTable-container'>
+            <DataTable
+                columns={columns}
+                data={data}
+                pagination
                 highlightOnHover
                 pointerOnHover
-                dense>
-            </DataTable>
+                dense
+                customStyles={customStyles}
+            />
         </div>
-    )
+    );
 }
 
-export default Table1
+export default Table1;

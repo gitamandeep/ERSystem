@@ -11,7 +11,7 @@ const data = [
       "itemName": "Office Supplies",
       "amount": 150.75,
       "merchantName": "Stationery Store",
-      "description": "Pens, papers, and notebooks",
+      "description": "Pens, papers, and notebooks ",
       "pdfUrl": "http://example.com/receipt.pdf",
       "expenseDate": "2024-07-01",
       "category": "Office"
