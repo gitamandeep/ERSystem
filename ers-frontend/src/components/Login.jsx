@@ -35,7 +35,7 @@ const Login = () => {
 
     if (validata()) { // Assuming validate() is a function that checks the login inputs
       try {
-        const response = await fetch('https://0de4-157-39-34-236.ngrok-free.app/api/v1/auth/login', {
+        const response = await fetch('https://899a-223-178-211-61.ngrok-free.app/api/v1/auth/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -86,7 +86,7 @@ const Login = () => {
 
   return (
     <>
-<div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+<div className="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
       <form onSubmit={handleLogin}>
         <div className={`form bg-white rounded-xl lg:rounded-e-xl text-${fonts.fontcolor} w-[85%] lg:w-[38%] h-[582px] p-4 lg:p-14 mt-3 lg:ml-[643px] m-auto`}>
           <div className="logo ml-[42%] lg:ml-[180px] ">

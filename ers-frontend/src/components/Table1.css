@@ -1,0 +1,42 @@
+/* DataTableStyles.css */
+.dataTable-container {
+    width: 90vw;
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .dataTable-header {
+    font-weight: bold;
+    font-size: 18px;
+    color: #343a40;
+    background-color: #f1f3f5;
+    padding: 12px;
+    border-bottom: 2px solid #dee2e6;
+  }
+  
+  .dataTable-row {
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .dataTable-row:hover {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dataTable-cell {
+    padding: 12px;
+    font-size: 16px;
+  }
+  
+  .dataTable-link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .dataTable-link:hover {
+    text-decoration: underline;
+  }
+  

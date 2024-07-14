@@ -4,7 +4,7 @@ import Card from './Card';
 import Table from './Table';
 import './Home.css'
 const Home = () => {
-  const [userData, setUserData] = useState(null);
+  // const [userData, setUserData] = useState(null);
 
   // useEffect(() => {
   //   const token = localStorage.getItem('token');
@@ -13,6 +13,7 @@ const Home = () => {
   //       method: 'GET',
   //       headers: {
   //         'Authorization': `Bearer ${token}`,
+          
   //       },
   //     })
   //       .then(res => {
