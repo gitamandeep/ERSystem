@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';  // Import React and hooks
+import { useParams, useNavigate } from 'react-router-dom';  // Import useParams and useNavigate
+import axios from 'axios';  // Import axios for HTTP requests
+import Navbar from './Navbar';  // Import Navbar component
 
-// Sample data
+// Sample data to simulate fetched data
 const data = [
   {
     "id": "1c504e91-fbba-4e5d-9ead-0d1d0ed4be8a",
@@ -11,7 +12,7 @@ const data = [
       "itemName": "Office Supplies",
       "amount": 150.75,
       "merchantName": "Stationery Store",
-      "description": "Pens, papers, and notebooks ",
+      "description": "Pens, papers, and notebooks",
       "pdfUrl": "http://example.com/receipt.pdf",
       "expenseDate": "2024-07-01",
       "category": "Office"
@@ -83,29 +84,25 @@ const data = [
 ];
 
 const Datapage = () => {
-  const { id } = useParams(); // Get the URL parameter
-  const [itemData, setItemData] = useState(data.find(item => item.id === id));
+  const { id } = useParams();  // Extract the ID from the URL parameters
+  const navigate = useNavigate();  // Hook for programmatic navigation
+  const [itemData, setItemData] = useState(data.find(item => item.id === id));  // Initialize state with the item data matching the ID
 
+  // Uncomment and use this effect to fetch data from an API
   // useEffect(() => {
   //     const fetchItemData = async () => {
   //         try {
-  //             const response = await axios.get(``);
-  //             setItemData(response.data);
+  //             const response = await axios.get(`api-endpoint/${id}`);
+  //             setItemData(response.data);  // Update state with fetched data
   //         } catch (error) {
-  //             console.error('Error fetching item data:', error);
+  //             console.error('Error fetching item data:', error);  // Handle errors
   //         }
   //     };
 
   //     fetchItemData();
   // }, [id]);
 
-  // if (!itemData) {
-  //     return <div>Loading...</div>;
-  // }
-
-  // const { id } = useParams();
-  // const itemData = data.find(item => item.id === id);
-
+  // If item data is not found, display a "Not Found" message
   if (!itemData) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 p-6">
@@ -116,104 +113,126 @@ const Datapage = () => {
     );
   }
 
-  const updateStatus = async (newStatus) => {
-    // In a real application, you would send this update to the server
-    // For now, we're just updating the state
+  // Function to update the status and redirect
+  const updateStatusAndRedirect = async (newStatus) => {
+    // Update state with the new status
     setItemData(prevData => ({
       ...prevData,
       status: newStatus
     }));
-    // Example API call (uncomment when using actual API)
+    // Uncomment and use this code to send the updated status to the server
     // await axios.post(`/api/expenses/${itemData.id}/status`, { status: newStatus });
+    navigate(`/new-page/${itemData.id}/${newStatus}`); // Correct URL structure
   };
 
+  // Object to determine text color based on status
   const statusColor = {
     'PENDING': 'text-yellow-600',
     'APPROVED': 'text-green-600',
     'DECLINED': 'text-red-600'
   };
 
+  // Function to format date string into readable format
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-    <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
-      <div className="p-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-6">{itemData.expense.itemName}</h1>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          <div className="space-y-4">
-            <div className="flex items-center">
-              <span className="text-lg font-semibold text-gray-700 w-1/3">Amount:</span>
-              <span className="text-lg text-gray-800">${itemData.expense.amount.toFixed(2)}</span>
+    <div className="flex flex-col min-h-screen bg-gray-100">
+      <Navbar />  {/* Render the Navbar component */}
+      <main className="flex-grow bg-gray-100 p-6">
+        <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+          <div className="p-8">
+            {/* Display the item's name */}
+            <h1 className="text-4xl font-bold text-gray-900 mb-6">{itemData.expense.itemName}</h1>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div className="space-y-4">
+                {/* Display item details */}
+                <div className="flex items-center">
+                  <span className="text-lg font-semibold text-gray-700 w-1/3">ID:</span>
+                  <span className="text-lg text-gray-800">{itemData.id}</span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-lg font-semibold text-gray-700 w-1/3">Amount:</span>
+                  <span className="text-lg text-gray-800">${itemData.expense.amount.toFixed(2)}</span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-lg font-semibold text-gray-700 w-1/3">Category:</span>
+                  <span className="text-lg text-gray-800">{itemData.expense.category}</span>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-lg font-semibold text-gray-700 w-1/3">Description:</span>
+                  <span className="text-lg text-gray-800 break-words flex-1 overflow-hidden">
+                    {itemData.expense.description}
+                  </span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-lg font-semibold text-gray-700 w-1/3">Status:</span>
+                  <span className={`text-lg ${statusColor[itemData.status]}`}>{itemData.status}</span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-lg font-semibold text-gray-700 w-1/3">Date:</span>
+                  <span className="text-lg text-gray-800">{formatDate(itemData.date)}</span>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">Employee Details</h2>
+                {/* Display employee details */}
+                <div className="flex items-center">
+                  <span className="text-lg font-semibold text-gray-700 w-1/3">Name:</span>
+                  <span className="text-lg text-gray-800">{itemData.employee.name}</span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-lg font-semibold text-gray-700 w-1/3">Username:</span>
+                  <span className="text-lg text-gray-800">{itemData.employee.username}</span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-lg font-semibold text-gray-700 w-1/3">Email:</span>
+                  <span className="text-lg text-gray-800">{itemData.employee.email}</span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-lg font-semibold text-gray-700 w-1/3">Role:</span>
+                  <span className="text-lg text-gray-800">{itemData.employee.roles.map(role => role.authority).join(', ')}</span>
+                </div>
+              </div>
             </div>
-            <div className="flex items-center">
-              <span className="text-lg font-semibold text-gray-700 w-1/3">Category:</span>
-              <span className="text-lg text-gray-800">{itemData.expense.category}</span>
+            <div className="mt-6 p-4 border-t border-gray-200 text-gray-600">
+              {/* Display additional information */}
+              <p className="text-sm">Merchant: {itemData.expense.merchantName}</p>
+              <p className="text-sm">Expense Date: {formatDate(itemData.expense.expenseDate)}</p>
             </div>
-            <div className="flex items-center">
-              <span className="text-lg font-semibold text-gray-700 w-1/3">Description:</span>
-              <span className="text-lg text-gray-800 break-words">{itemData.expense.description}</span>
+            <div className="mt-6 flex gap-4">
+              {/* Buttons to update status and navigate */}
+              <button 
+                onClick={() => updateStatusAndRedirect('APPROVED')}
+                className="bg-green-500 text-white rounded-lg py-2 px-4 text-center font-medium hover:bg-green-600 transition duration-300 ease-in-out"
+              >
+                Approve
+              </button>
+              <button 
+                onClick={() => updateStatusAndRedirect('DECLINED')}
+                className="bg-red-500 text-white rounded-lg py-2 px-4 text-center font-medium hover:bg-red-600 transition duration-300 ease-in-out"
+              >
+                Decline
+              </button>
             </div>
-            <div className="flex items-center">
-              <span className="text-lg font-semibold text-gray-700 w-1/3">Status:</span>
-              <span className={`text-lg ${statusColor[itemData.status]}`}>{itemData.status}</span>
-            </div>
-            <div className="flex items-center">
-              <span className="text-lg font-semibold text-gray-700 w-1/3">Date:</span>
-              <span className="text-lg text-gray-800">{new Date(itemData.date).toLocaleDateString()}</span>
+            <div className="mt-6">
+              {/* Link to view the receipt */}
+              <a
+                href={itemData.expense.pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-500 text-white rounded-lg py-2 px-4 text-center font-medium hover:bg-blue-600 transition duration-300 ease-in-out"
+              >
+                View Receipt
+              </a>
             </div>
           </div>
-          <div className="space-y-4">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Employee Details</h2>
-            <div className="flex items-center">
-              <span className="text-lg font-semibold text-gray-700 w-1/3">Name:</span>
-              <span className="text-lg text-gray-800">{itemData.employee.name}</span>
-            </div>
-            <div className="flex items-center">
-              <span className="text-lg font-semibold text-gray-700 w-1/3">Username:</span>
-              <span className="text-lg text-gray-800">{itemData.employee.username}</span>
-            </div>
-            <div className="flex items-center">
-              <span className="text-lg font-semibold text-gray-700 w-1/3">Email:</span>
-              <span className="text-lg text-gray-800">{itemData.employee.email}</span>
-            </div>
-            <div className="flex items-center">
-              <span className="text-lg font-semibold text-gray-700 w-1/3">Role:</span>
-              <span className="text-lg text-gray-800">{itemData.employee.roles.map(role => role.authority).join(', ')}</span>
-            </div>
-          </div>
         </div>
-        <div className="mt-6 p-4 border-t border-gray-200 text-gray-600">
-          <p className="text-sm">Merchant: {itemData.expense.merchantName}</p>
-          <p className="text-sm">Expense Date: {new Date(itemData.expense.expenseDate).toLocaleDateString()}</p>
-        </div>
-        <div className="mt-6 flex gap-4">
-          <button
-            onClick={() => updateStatus('APPROVED')}
-            className="bg-green-500 text-white rounded-lg py-2 px-4 text-center font-medium hover:bg-green-600 transition duration-300 ease-in-out"
-          >
-            Approve
-          </button>
-          <button
-            onClick={() => updateStatus('DECLINED')}
-            className="bg-red-500 text-white rounded-lg py-2 px-4 text-center font-medium hover:bg-red-600 transition duration-300 ease-in-out"
-          >
-            Decline
-          </button>
-        </div>
-        <div className="mt-6">
-          <a
-            href={itemData.expense.pdfUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-blue-500 text-white rounded-lg py-2 px-4 text-center font-medium hover:bg-blue-600 transition duration-300 ease-in-out"
-          >
-            View Receipt
-          </a>
-        </div>
-      </div>
+      </main>
     </div>
-  </div>
   );
 };
 
-export default Datapage;
-
+export default Datapage;  // Export the Datapage component for use in other parts of the application
