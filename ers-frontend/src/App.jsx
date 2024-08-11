@@ -8,6 +8,7 @@ import Employee from './components/Employee';
 import CreateExpense from './components/CreateExpense';
 import Reimbursement from './components/Reimbursement';
 import Newpage from './components/Newpage';
+import ResetPassword from './components/ResetPassword';
 
 function App() {
   return (
@@ -19,10 +20,10 @@ function App() {
             <Route path='/' element= {<Home />} />
            <Route path="/data/:id" element={<Datapage />} /> {/* Route with URL parameter */}
           </Route>
-          <Route path='/' element={<ProtectedRoutes />}>
+          {/* <Route path='/' element={<ProtectedRoutes />}>
             <Route path='/' element= {<Home />} />
-           <Route path="/new-page/:id/:status" element={<Newpage />} /> {/* Route with URL parameter */}
-          </Route>
+           <Route path="/new-page/:id/:status" element={<Newpage />} /> Route with URL parameter
+          </Route> */}
           <Route path='/' element={<ProtectedRoutes />}>
             <Route path='/' element= {<Home />} />
             <Route path='/reimbursement' element= {<Reimbursement  />} /> {/* Route with URL parameter */}

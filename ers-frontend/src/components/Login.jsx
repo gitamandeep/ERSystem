@@ -1,19 +1,19 @@
 import React, { useState, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import './Login.css';
-import { colors } from '../theame/color'; // Assuming you use colors from the theme
-import { fonts } from '../theame/fontcolor'; // Assuming you use font colors from the theme
 import axios from 'axios';
+import ResetPassword from './ResetPassword'; // Import ResetPassword component
+import './Login.css';
+import { colors } from '../theame/color';
+import { fonts } from '../theame/fontcolor';
 
 const Login = () => {
-  const [login, setLogin] = useState({}); // State to store login details
-  const ref = useRef(); // Reference to the eye icon
-  const passwordref = useRef(); // Reference to the password input field
-  const navigate = useNavigate(); // Hook to navigate between routes
+  const [login, setLogin] = useState({});
+  const [showModal, setShowModal] = useState(false); // State for modal visibility
+  const ref = useRef();
+  const passwordref = useRef();
+  const navigate = useNavigate();
 
-  // Function to toggle the visibility of the password
   const showPassword = () => {
-    passwordref.current.type = "text";
     if (ref.current.src.includes("closeeyes.svg")) {
       ref.current.src = "eyes.svg";
       passwordref.current.type = "text";
@@ -23,16 +23,14 @@ const Login = () => {
     }
   };
 
-  // Function to handle input changes and update the login state
   const handlechange = (e) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
   };
 
-  // Function to handle login form submission
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (validata()) { // Assuming validate() is a function that checks the login inputs
+    if (validata()) {
       try {
         const response = await axios.post('https://0421-223-178-208-92.ngrok-free.app/api/v1/auth/login', {
           username: login.username,
@@ -47,21 +45,18 @@ const Login = () => {
         const token = data.jwtToken;
         console.log(data);
 
-        // Store the token and user details in local storage
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(login));
 
-        navigate('/'); // Redirect to home page on successful login
+        navigate('/');
 
       } catch (error) {
         console.error('Error:', error);
         alert("Login failed. Username or password is incorrect.");
-        // Handle error (e.g., show error message to user)
       }
     }
   };
 
-  // Function to validate login inputs
   const validata = () => {
     let result = true;
     if (login.username === '' || login.username === null) {
@@ -73,6 +68,14 @@ const Login = () => {
       alert("Enter password");
     }
     return result;
+  };
+
+  const openResetPasswordModal = () => {
+    setShowModal(true);
+  };
+
+  const closeResetPasswordModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -113,7 +116,7 @@ const Login = () => {
           </div>
 
           {/* Forget password link */}
-          <div className="forget font-custom font-light text-sm cursor-pointer hover:font-bold lg:ml-[65%]">
+          <div onClick={openResetPasswordModal} className="forget font-custom font-light text-sm cursor-pointer hover:font-bold lg:ml-[65%]">
             Forget Password?
           </div>
 
@@ -137,6 +140,9 @@ const Login = () => {
           </div>
         </div>
       </form>
+
+      {/* Reset Password Modal */}
+      {showModal && <ResetPassword onClose={closeResetPasswordModal} />}
     </>
   );
 }

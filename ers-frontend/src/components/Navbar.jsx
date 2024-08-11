@@ -56,15 +56,15 @@ const Navbar = () => {
           <ul className='text-black flex md:gap-7 gap-4 md:text-xl text-xs font-semibold m-0 md:m-4 font-custom'>
             <NavLink
               className={({ isActive }) => isActive ? "text-blue-500" : ""}
-              to="/reimbursement"
+              to="/"
             >
-              <li className='cursor-pointer hover:text-blue-700'>Reimbursement</li>
+              <li className='cursor-pointer hover:text-blue-700'>Home</li>
             </NavLink>
             <NavLink
               className={({ isActive }) => isActive ? "text-blue-500" : ""}
-              to="/employe"
+              to="/reimbursement"
             >
-              <li className='cursor-pointer hover:text-blue-700'>Employees</li>
+              <li className='cursor-pointer hover:text-blue-700'>Reimbursement</li>
             </NavLink>
           </ul>
         </div>
