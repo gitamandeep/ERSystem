@@ -35,13 +35,13 @@ public class ErsApplication {
 			}
 
 			// Check if the user with username "admin" exists
-			Optional<User> userOptional  = userRepository.findByUsername("8804506100");
+			Optional<User> userOptional  = userRepository.findByUsername("9876543210");
 			if (userOptional.isEmpty()) {
 				User user = new User();
-				user.setUsername("8804506100");
+				user.setUsername("9876543210");
 				user.setName("Aman Deep");
 				user.setEmail("amandeep@electrowaves.com");
-				user.setPassword(passwordEncoder.encode("aman123"));
+				user.setPassword(passwordEncoder.encode("password123"));
 				Set<Role> roles = new HashSet<>();
 				roles.add(adminRole);
 				user.setRoles(roles);

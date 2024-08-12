@@ -35,7 +35,7 @@ const Login = () => {
 
     if (validata()) { // Assuming validate() is a function that checks the login inputs
       try {
-        const response = await fetch('https://899a-223-178-211-61.ngrok-free.app/api/v1/auth/login', {
+        const response = await fetch('http://localhost:8080/api/v1/auth/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

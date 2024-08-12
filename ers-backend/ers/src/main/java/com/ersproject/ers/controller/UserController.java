@@ -1,6 +1,7 @@
 package com.ersproject.ers.controller;
 
 
+import com.ersproject.ers.dto.ReimbursementCountDTO;
 import com.ersproject.ers.dto.ReimbursementDTO;
 import com.ersproject.ers.model.Reimbursement;
 import com.ersproject.ers.model.User;
@@ -53,6 +54,18 @@ public class UserController {
         // Return a response entity with the created reimbursement and HTTP status 201 (Created)
         return new ResponseEntity<>(savedReimbursement, HttpStatus.CREATED);
     }
+
+    @GetMapping("/reimbursement-count")
+    public ResponseEntity<ReimbursementCountDTO> getReimbursementCount(Authentication authentication){
+        String username = authentication.getName();
+        ReimbursementCountDTO countDTO = reimbursementService.getReimbursementCount(username);
+        return ResponseEntity.ok(countDTO);
+    }
+
+
+
+//
+//    @GetMapping("/reimbursement-amount")
 }
 //io.jsonwebtoken.security.SignatureException: JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
 //	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:399)
