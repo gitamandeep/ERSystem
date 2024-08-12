@@ -2,91 +2,94 @@ import React, { useState, useEffect } from 'react';  // Import React and hooks
 import { useParams, useNavigate } from 'react-router-dom';  // Import useParams and useNavigate
 import axios from 'axios';  // Import axios for HTTP requests
 import Navbar from './Navbar';  // Import Navbar component
+import Newpage from './Newpage';
 
 // Sample data to simulate fetched data
 const data = [
   {
-    "id": "1c504e91-fbba-4e5d-9ead-0d1d0ed4be8a",
-    "expense": {
-      "id": "9faa4b23-47f3-437e-877f-999908f50792",
-      "itemName": "Office Supplies",
-      "amount": 150.75,
-      "merchantName": "Stationery Store",
-      "description": "Pens, papers, and notebooks",
-      "pdfUrl": "http://example.com/receipt.pdf",
-      "expenseDate": "2024-07-01",
-      "category": "Office"
+    id: '1c504e91-fbba-4e5d-9ead-0d1d0ed4be8a',
+    expense: {
+      id: '9faa4b23-47f3-437e-877f-999908f50792',
+      itemName: 'Office Supplies',
+      amount: 150.75,
+      merchantName: 'Stationery Store',
+      description: 'Pens, papers, and notebooks',
+      pdfUrl: 'http://example.com/receipt.pdf',
+      expenseDate: '2024-07-01',
+      category: 'Office',
     },
-    "employee": {
-      "username": "9934506100",
-      "name": "Ayush",
-      "email": "ayush@gmail.com",
-      "password": "$2a$10$FNtW8j4BLmLODwOhjvVKwO.ZP2iXWOX35ku/d7Cbv0apG0jHMcAEa",
-      "roles": [
+    employee: {
+      username: '9934506100',
+      name: 'Ayush',
+      email: 'ayush@gmail.com',
+      password: '$2a$10$FNtW8j4BLmLODwOhjvVKwO.ZP2iXWOX35ku/d7Cbv0apG0jHMcAEa',
+      roles: [
         {
-          "id": "ab16d8de-cbd7-43dd-95df-6e4ae3e78c7c",
-          "authority": "USER"
-        }
+          id: 'ab16d8de-cbd7-43dd-95df-6e4ae3e78c7c',
+          authority: 'USER',
+        },
       ],
-      "enabled": true,
-      "id": "34d1e4dc-bfe7-4623-ac3d-08a0eab1cca1",
-      "authorities": [
+      enabled: true,
+      id: '34d1e4dc-bfe7-4623-ac3d-08a0eab1cca1',
+      authorities: [
         {
-          "id": "ab16d8de-cbd7-43dd-95df-6e4ae3e78c7c",
-          "authority": "USER"
-        }
+          id: 'ab16d8de-cbd7-43dd-95df-6e4ae3e78c7c',
+          authority: 'USER',
+        },
       ],
-      "accountNonLocked": true,
-      "accountNonExpired": true,
-      "credentialsNonExpired": true
+      accountNonLocked: true,
+      accountNonExpired: true,
+      credentialsNonExpired: true,
     },
-    "status": "PENDING",
-    "date": "2024-07-09"
+    status: 'PENDING',
+    date: '2024-07-09',
   },
   {
-    "id": "65b387ae-be49-4b34-a719-166a25b54a11",
-    "expense": {
-      "id": "ab5a2504-fa00-48c6-ab34-7453157b6eb6",
-      "itemName": "Stationary item",
-      "amount": 150.75,
-      "merchantName": "Stationery Store",
-      "description": "Pens, papers, and notebooks",
-      "pdfUrl": "http://example.com/receipt.pdf",
-      "expenseDate": "2024-07-01",
-      "category": "Office"
+    id: '65b387ae-be49-4b34-a719-166a25b54a11',
+    expense: {
+      id: 'ab5a2504-fa00-48c6-ab34-7453157b6eb6',
+      itemName: 'Stationary item',
+      amount: 150.75,
+      merchantName: 'Stationery Store',
+      description: 'Pens, papers, and notebooks',
+      pdfUrl: 'http://example.com/receipt.pdf',
+      expenseDate: '2024-07-01',
+      category: 'Office',
     },
-    "employee": {
-      "username": "9934506100",
-      "name": "Ayush",
-      "email": "ayush@gmail.com",
-      "password": "$2a$10$FNtW8j4BLmLODwOhjvVKwO.ZP2iXWOX35ku/d7Cbv0apG0jHMcAEa",
-      "roles": [
+    employee: {
+      username: '9934506100',
+      name: 'Ayush',
+      email: 'ayush@gmail.com',
+      password: '$2a$10$FNtW8j4BLmLODwOhjvVKwO.ZP2iXWOX35ku/d7Cbv0apG0jHMcAEa',
+      roles: [
         {
-          "id": "ab16d8de-cbd7-43dd-95df-6e4ae3e78c7c",
-          "authority": "USER"
-        }
+          id: 'ab16d8de-cbd7-43dd-95df-6e4ae3e78c7c',
+          authority: 'USER',
+        },
       ],
-      "enabled": true,
-      "id": "34d1e4dc-bfe7-4623-ac3d-08a0eab1cca1",
-      "authorities": [
+      enabled: true,
+      id: '34d1e4dc-bfe7-4623-ac3d-08a0eab1cca1',
+      authorities: [
         {
-          "id": "ab16d8de-cbd7-43dd-95df-6e4ae3e78c7c",
-          "authority": "USER"
-        }
+          id: 'ab16d8de-cbd7-43dd-95df-6e4ae3e78c7c',
+          authority: 'USER',
+        },
       ],
-      "accountNonLocked": true,
-      "accountNonExpired": true,
-      "credentialsNonExpired": true
+      accountNonLocked: true,
+      accountNonExpired: true,
+      credentialsNonExpired: true,
     },
-    "status": "PENDING",
-    "date": "2024-07-09"
-  }
+    status: 'PENDING',
+    date: '2024-07-09',
+  },
 ];
 
 const Datapage = () => {
   const { id } = useParams();  // Extract the ID from the URL parameters
   const navigate = useNavigate();  // Hook for programmatic navigation
   const [itemData, setItemData] = useState(data.find(item => item.id === id));  // Initialize state with the item data matching the ID
+  const [showModal, setShowModal] = useState(false);  // State to control the modal visibility
+  const [selectedAction, setSelectedAction] = useState('');  // State to store the selected action
 
   // Uncomment and use this effect to fetch data from an API
   // useEffect(() => {
@@ -102,6 +105,8 @@ const Datapage = () => {
   //     fetchItemData();
   // }, [id]);
 
+  
+
   // If item data is not found, display a "Not Found" message
   if (!itemData) {
     return (
@@ -113,23 +118,34 @@ const Datapage = () => {
     );
   }
 
+  // Function to handle the action button clicks (Approve/Decline)
+  const handleActionClick = (action) => {
+    setSelectedAction(action);
+    setShowModal(true);  // Show the modal when an action is selected
+  };
+
+  const closeModal = () => {
+    setShowModal(false);  // Close the modal
+  };
+
   // Function to update the status and redirect
-  const updateStatusAndRedirect = async (newStatus) => {
+  const updateStatusAndRedirect = async () => {
     // Update state with the new status
     setItemData(prevData => ({
       ...prevData,
-      status: newStatus
+      status: selectedAction,
     }));
     // Uncomment and use this code to send the updated status to the server
-    // await axios.post(`/api/expenses/${itemData.id}/status`, { status: newStatus });
-    navigate(`/new-page/${itemData.id}/${newStatus}`); // Correct URL structure
+    // await axios.post(`/api/expenses/${itemData.id}/status`, { status: selectedAction });
+    setShowModal(false);  // Hide the modal after confirmation
+    navigate(`/new-page/${itemData.id}/${selectedAction}`); // Correct URL structure
   };
 
   // Object to determine text color based on status
   const statusColor = {
     'PENDING': 'text-yellow-600',
     'APPROVED': 'text-green-600',
-    'DECLINED': 'text-red-600'
+    'DECLINED': 'text-red-600',
   };
 
   // Function to format date string into readable format
@@ -205,13 +221,13 @@ const Datapage = () => {
             <div className="mt-6 flex gap-4">
               {/* Buttons to update status and navigate */}
               <button 
-                onClick={() => updateStatusAndRedirect('APPROVED')}
+                onClick={() => handleActionClick('APPROVED')}
                 className="bg-green-500 text-white rounded-lg py-2 px-4 text-center font-medium hover:bg-green-600 transition duration-300 ease-in-out"
               >
                 Approve
               </button>
               <button 
-                onClick={() => updateStatusAndRedirect('DECLINED')}
+                onClick={() => handleActionClick('DECLINED')}
                 className="bg-red-500 text-white rounded-lg py-2 px-4 text-center font-medium hover:bg-red-600 transition duration-300 ease-in-out"
               >
                 Decline
@@ -231,6 +247,18 @@ const Datapage = () => {
           </div>
         </div>
       </main>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-[#bdbdbd] bg-opacity-80 z-50">
+        <Newpage
+          id={id}
+          status={selectedAction}
+          onClose={closeModal}  // Pass the onClose function to Newpage
+        />
+      </div>
+        
+      )}
     </div>
   );
 };
