@@ -47,9 +47,9 @@ const Home = () => {
       <Navbar />
       {/* Render cards with different statuses */}
       <div className="md:flex md:flex-wrap">
-        <Card className='cursor-pointer hover:bg-[#8064A2] hover:text-white' heading="Pending Task" />
-        <Card className='cursor-pointer hover:bg-[#77933C] hover:text-white' heading="Approval Task" />
-        <Card className='cursor-pointer hover:bg-[#C0504D] hover:text-white' heading="Decline Task" />
+        <Card className='cursor-pointer hover:bg-[#8064A2] hover:text-white' heading="Pending Task"  main="Pending Approval" Expense="Unreported Expenses" advances="Unreported Advances"/>
+        <Card className='cursor-pointer hover:bg-[#77933C] hover:text-white' heading="Approval Task" main="Total Approved" Expense="Unreported Expenses" advances="Unreported Advances" />
+        <Card className='cursor-pointer hover:bg-[#C0504D] hover:text-white' heading="Decline Task"  main="Total Declined" Expense="Unreported Expenses" advances="Unreported Advances"/>
         <Card 
           className='cursor-pointer hover:bg-[#0096C8] hover:text-white' 
           heading='Read More'
