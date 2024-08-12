@@ -48,6 +48,7 @@ const Card = (props) => {
 
     return (
         <>
+        <div class="absolute top-0 z-[-2] h-screen w-screen bg-white bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]"></div>
             {/* Card section with dynamic classes and props */}
             <section className={`card mb-10 lg:w-[45%] w-[85%] mx-auto text-black border-2 border-gray-100 shadow-lg rounded-lg bg-white min-h-[260px] ${props.className}`}>
                 {/* Card heading */}
