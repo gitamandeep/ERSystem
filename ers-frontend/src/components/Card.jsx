@@ -4,51 +4,62 @@ import { NavLink } from 'react-router-dom';
 
 // Define a functional component named "Card"
 const Card = (props) => {
-    // // State variables to store fetched numbers
-    // const [pendingApprovals, setPendingApprovals] = useState(0);
+    // State variables to store fetched numbers
+    const [pendingApprovals, setPendingApprovals] = useState(0);
     // const [unreportedExpenses, setUnreportedExpenses] = useState(0);
     // const [unreportedAdvances, setUnreportedAdvances] = useState(0.00);
 
-    // useEffect(() => {
-    //     // Function to fetch pending approvals
-    //     const fetchPendingApprovals = async () => {
-    //         try {
-    //             const response = await axios.get('/api/pending-approvals');
-    //             setPendingApprovals(response.data.count);
-    //         } catch (error) {
-    //             console.error('Error fetching pending approvals:', error);
-    //         }
-    //     };
+    useEffect(() => {
+        // Assuming you store the token in localStorage
+        const token = localStorage.getItem('token');
 
-    //     // Function to fetch unreported expenses
-    //     const fetchUnreportedExpenses = async () => {
-    //         try {
-    //             const response = await axios.get('/api/unreported-expenses');
-    //             setUnreportedExpenses(response.data.count);
-    //         } catch (error) {
-    //             console.error('Error fetching unreported expenses:', error);
-    //         }
-    //     };
+        // Configure axios with the token
+        const axiosConfig = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        };
 
-    //     // Function to fetch unreported advances
-    //     const fetchUnreportedAdvances = async () => {
-    //         try {
-    //             const response = await axios.get('/api/unreported-advances');
-    //             setUnreportedAdvances(response.data.amount);
-    //         } catch (error) {
-    //             console.error('Error fetching unreported advances:', error);
-    //         }
-    //     };
+        // Function to fetch pending approvals
+        const fetchPendingApprovals = async () => {
+            try {
+                const response = await axios.get('https://972d-2401-4900-1c2b-11c5-f185-9a92-1db3-fe21.ngrok-free.app/api/v1/admin/pending-reimbursement-count', axiosConfig);
+                setPendingApprovals(response.data);
+                console.log(response)
+            } catch (error) {
+                console.error('Error fetching pending approvals:', error);
+            }
+        };
 
-    //     // Call all fetch functions
-    //     fetchPendingApprovals();
-    //     fetchUnreportedExpenses();
-    //     fetchUnreportedAdvances();
-    // }, []);
+        // // Function to fetch unreported expenses
+        // const fetchUnreportedExpenses = async () => {
+        //     try {
+        //         const response = await axios.get('/api/unreported-expenses', axiosConfig);
+        //         setUnreportedExpenses(response.data);
+        //     } catch (error) {
+        //         console.error('Error fetching unreported expenses:', error);
+        //     }
+        // };
+
+        // // Function to fetch unreported advances
+        // const fetchUnreportedAdvances = async () => {
+        //     try {
+        //         const response = await axios.get('/api/unreported-advances', axiosConfig);
+        //         setUnreportedAdvances(response.data);
+        //     } catch (error) {
+        //         console.error('Error fetching unreported advances:', error);
+        //     }
+        // };
+
+        // Call all fetch functions
+        fetchPendingApprovals();
+        // fetchUnreportedExpenses();
+        // fetchUnreportedAdvances();
+    }, []);
 
     return (
         <>
-        <div class="absolute top-0 z-[-2] h-screen w-screen bg-white bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]"></div>
+        <div className="absolute top-0 z-[-2] h-[120vh] w-[98vw] bg-gray-200 bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]"></div>
             {/* Card section with dynamic classes and props */}
             <section className={`card mb-10 lg:w-[45%] w-[85%] mx-auto text-black border-2 border-gray-100 shadow-lg rounded-lg bg-white min-h-[260px] ${props.className}`}>
                 {/* Card heading */}
@@ -81,7 +92,7 @@ const Card = (props) => {
                             <div className="approve font-custom text-lg font-light">
                                 {props.main}
                             </div>
-                            {/* <div className='font-semibold text-xl ml-auto mr-3 md:mr-6'>{pendingApprovals}</div> */}
+                            <div className='font-semibold text-xl ml-auto mr-3 md:mr-6'>{pendingApprovals}</div>
                         </div>
                         <div className='w-[95%] h-[1px] bg-gray-300 mx-auto'></div>
                         {/* Section for Unreported Expenses */}

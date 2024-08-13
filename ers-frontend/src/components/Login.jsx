@@ -32,7 +32,7 @@ const Login = () => {
 
     if (validata()) {
       try {
-        const response = await axios.post('https://bef9-2409-4055-2e46-faa5-3457-4cbd-e0e9-f61a.ngrok-free.app/', {
+        const response = await axios.post('https://972d-2401-4900-1c2b-11c5-f185-9a92-1db3-fe21.ngrok-free.app/api/v1/auth/login', {
           username: login.username,
           password: login.password,
         }, {
