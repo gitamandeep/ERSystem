@@ -152,7 +152,7 @@ const Pro = () => {
 
 
         {/* Main Content */}
-        <main className="w-3/4 p-8 bg-gray-50 border border-gray-200 rounded-e-3xl">
+        <main className="w-3/4 p-8 bg-slate-50 border border-gray-200 rounded-e-3xl">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-2xl font-bold">Personal Information</h2>
             {saving && (
