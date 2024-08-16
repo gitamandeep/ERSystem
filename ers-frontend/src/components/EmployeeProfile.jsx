@@ -1,9 +1,9 @@
 import React, { useState, useEffect} from 'react';
-import Navbar from './Navbar';
 import { NavLink } from 'react-router-dom';
-import Proaside from './Proaside';
+import Empoloyeeaside from './Empoloyeeaside';
+import EmployeeNavbar from './EmployeeNavbar';
 
-const Pro = () => {
+const EmployeeProfile = () => {
   const [profileData, setProfileData] = useState({
     id: '',
     email: '',
@@ -71,10 +71,10 @@ const Pro = () => {
   return (
     <>
       <div className="absolute top-0 z-[-2] h-[129vh] w-[98.75vw] bg-gray-100"></div>
-      <Navbar />
+      <EmployeeNavbar />
       <div className="flex h-screen text-black container mx-auto rounded-xl mb-16 font-custom">
         {/* Sidebar */}
-        <Proaside/>
+        <Empoloyeeaside/>
 
         {/* Main Content */}
         <main className="w-3/4 p-8 bg-slate-50 border border-gray-200 rounded-e-3xl">
@@ -172,4 +172,4 @@ const Pro = () => {
   );
 };
 
-export default Pro;
+export default EmployeeProfile;
