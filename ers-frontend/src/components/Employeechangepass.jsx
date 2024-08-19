@@ -11,7 +11,7 @@ const Employeechangepass = () => {
     const oldPasswordRef = useRef();
     const newPasswordRef = useRef();
     const confirmPasswordRef = useRef();
-    
+
     const oldEyeRef = useRef();
     const newEyeRef = useRef();
     const confirmEyeRef = useRef();
@@ -54,42 +54,48 @@ const Employeechangepass = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // Retrieve the stored old password from localStorage
-        const storedPassword = localStorage.getItem("password");
-        console.log(storedPassword)
+    
+        // Retrieve the stored user object from localStorage
+        const storedUser = JSON.parse(localStorage.getItem("user")); // Convert JSON string to object
+    
+        // Access the password from the storedUser object
+        const storedPassword = storedUser?.password; // Use optional chaining to avoid errors if storedUser is null
+    
+        console.log(storedPassword);
+    
         // Check if the old password matches the stored password
         if (first.oldpassword !== storedPassword) {
             setPasswordError("Old password is incorrect.");
             return; // Prevent form submission if validation fails
         }
-
+    
         // Validate the new password
         const passwordValidationMessage = validatePassword(first.newpassword || "");
-
+    
         if (passwordValidationMessage) {
             setPasswordError(passwordValidationMessage);
             return; // Prevent form submission if validation fails
         }
-
+    
         // Check if new password matches confirm password
         if (first.newpassword !== first.confirmpassword) {
             setPasswordError("New password and confirmation password do not match.");
             return;
         }
-
-        // Remove the old password from localStorage
-        localStorage.removeItem("password");
-
-        // Save the new password in localStorage
-        localStorage.setItem("password", first.newpassword);
-
+    
+        // Update the password in the storedUser object
+        storedUser.password = first.newpassword;
+    
+        // Save the updated user object back to localStorage
+        localStorage.setItem("user", JSON.stringify(storedUser)); // Convert object back to JSON string
+    
         // Handle success message or redirection
         alert("Password changed successfully!");
-
+    
         // Clear the form fields
         setfirst({});
     };
+    
 
     return (
         <>
