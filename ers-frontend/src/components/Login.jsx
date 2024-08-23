@@ -32,10 +32,14 @@ const Login = () => {
 
     if (validata()) {
       try {
-        const response = await axios.post('https://972d-2401-4900-1c2b-11c5-f185-9a92-1db3-fe21.ngrok-free.app/api/v1/auth/login', {
+
+        const response = await fetch('http://localhost:8080/api/v1/auth/login', {
+          method: 'POST',
+
           username: login.username,
           password: login.password,
         }, {
+
           headers: {
             'Content-Type': 'application/json'
           }
