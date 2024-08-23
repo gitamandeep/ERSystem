@@ -66,6 +66,12 @@ const Navbar = () => {
             >
               <li className='cursor-pointer hover:text-blue-700'>Reimbursement</li>
             </NavLink>
+            <NavLink
+              className={({ isActive }) => isActive ? "text-blue-500" : ""}
+              to="/profile"
+            >
+              <li className='cursor-pointer hover:text-blue-700'>Profile</li>
+            </NavLink>
           </ul>
         </div>
         

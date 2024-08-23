@@ -4,6 +4,7 @@ import DataTable from 'react-data-table-component'
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import './Table1.css'
+import EmployeeNavbar from './EmployeeNavbar'
 
 const EmployeeTable = () => {
     const [search, setSearch] = useState('');
@@ -38,7 +39,7 @@ const EmployeeTable = () => {
             sortable: true,
             cell: row => (
                 <NavLink
-                    to={`/data/${row.id}`}
+                    to={`/employeedatapage/${row.id}`}
                     className="dataTable-link"
                 >
                     {row.expense.itemName}
@@ -229,6 +230,8 @@ const EmployeeTable = () => {
 
 
     return (
+        <>
+            <EmployeeNavbar/>
         <div className='dataTable-container bg-slate-100 max-w-7xl mb-10'>
         {employeeNames.map(name => (
             <h1 key={name} className='text-black text-2xl m-4 font-semibold font-custom'>Welcome {name}</h1>
@@ -243,6 +246,7 @@ const EmployeeTable = () => {
             customStyles={customStyles}
         />
     </div>
+    </>
     );
 }
 

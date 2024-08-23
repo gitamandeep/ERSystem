@@ -33,11 +33,27 @@ const EmployeeNavbar = () => {
                     <h1 className='text-black text-2xl md:text-2xl md:hidden block m-0 md:m-0 font-custom font-bold'>&lt;ERS/&gt;</h1>
                 </div>
                 <div>
-                    <ul className='text-black flex md:gap-7 gap-4 md:text-xl text-lg font-semibold m-0 md:m-4 font-custom'>
-                        <NavLink to="#"><li className='cursor-pointer hover:text-blue-700'>Employes</li></NavLink>
-                        <NavLink to="#"><li className='cursor-pointer hover:text-blue-700'>Profile</li></NavLink>
-                    </ul>
-                </div>
+          <ul className='text-black flex md:gap-7 gap-4 md:text-xl text-xs font-semibold m-0 md:m-4 font-custom'>
+            <NavLink
+              className={({ isActive }) => isActive ? "text-blue-500" : ""}
+              to="/employee"
+            >
+              <li className='cursor-pointer hover:text-blue-700'>Home</li>
+            </NavLink>
+            <NavLink
+              className={({ isActive }) => isActive ? "text-blue-500" : ""}
+              to="/employeetable"
+            >
+              <li className='cursor-pointer hover:text-blue-700'>Reimbursement</li>
+            </NavLink>
+            <NavLink
+              className={({ isActive }) => isActive ? "text-blue-500" : ""}
+              to="/employeeprofile"
+            >
+              <li className='cursor-pointer hover:text-blue-700'>Profile</li>
+            </NavLink>
+          </ul>
+        </div>
                 <div className="btn gap-[10px]">
                     <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Logout</button>
                 </div>
