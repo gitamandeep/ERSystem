@@ -11,7 +11,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+<<<<<<< HEAD
+//rtest
+=======
 //tesssssst
+>>>>>>> afac1ad5877f50e2a41937b4802e94303abc8bc2
 @Configuration
 public class AppConfig {
 
